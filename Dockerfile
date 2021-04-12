@@ -1,4 +1,4 @@
-FROM node:12.0-slim
+FROM quay.io/jitesoft/node:13-slim
 
 COPY . .
 
