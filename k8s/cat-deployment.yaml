@@ -16,6 +16,7 @@ spec:
     spec:
       containers:
         - name: cat-container
+          imagePullPolicy: Always
           env:
             - name: MONGO_URL
               value: mongodb://sepp:sepp@mongodb:27017/cats

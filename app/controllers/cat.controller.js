@@ -3,16 +3,16 @@ const Cat = require('../models/cat.model.js');
 // Create and Save a new Cat
 exports.create = (req, res) => {
     // Validate request
-    if(!req.body.name || !req.body.owner || !req.body.color) {
+    if(!req.body.name || !req.body.color) {
         return res.status(400).send({
-            message: "Cat needs: name, owner, color"
+            message: "Cat needs: name, color"
         });
     }
 
     // Create a Cat
     const cat = new Cat({
         name: req.body.name,
-        owner: req.body.owner,
+        owner: req.body.owner || "Michi",
         color: req.body.color
     });
 
@@ -64,16 +64,16 @@ exports.findOne = (req, res) => {
 // Update a cat identified by the catId in the request
 exports.update = (req, res) => {
     // Validate Request
-    if(!req.body.name || !req.body.owner || !req.body.color) {
+    if(!req.body.name || !req.body.color) {
         return res.status(400).send({
-            message: "Cat needs: name, owner, color"
+            message: "Cat needs: name, color"
         });
     }
 
     // Find cat and update it with the request body
     Cat.findByIdAndUpdate(req.params.catId, {
         name: req.body.name,
-        owner: req.body.owner,
+        owner: req.body.owner || "Michi",
         color: req.body.color
     }, {new: true})
         .then(Cat => {
