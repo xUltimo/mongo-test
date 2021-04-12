@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: cats
+  name: cats
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cats # these have to be the same
+  template:
+    metadata:
+      labels:
+        app: cats # these have to be the same
+    spec:
+      containers:
+        - name: cat-container
+          env:
+            - name: MONGO_URL
+              value: mongodb://sepp:sepp@mongodb:27017/cats
+          image: quay.io/sadomasupilami/mongo-test:latest
+          ports:
+            - containerPort: 3000
+      restartPolicy: Always
