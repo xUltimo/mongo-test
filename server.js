@@ -28,7 +28,7 @@ mongoose.connect(dbConfig.url, {
 
 // define a simple route
 app.get('/', (req, res) => {
-    res.json({"message": "Welcome to the awesome best every made db!!!! 2"});
+    res.json({"message": "Welcome to the updated and better cat-db (breed including TIGER & taillength)"});
 });
 
 require('./app/routes/cat.routes.js')(app);
