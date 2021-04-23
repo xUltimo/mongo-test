@@ -3,17 +3,19 @@ const Cat = require('../models/cat.model.js');
 // Create and Save a new Cat
 exports.create = (req, res) => {
     // Validate request
-    if(!req.body.name || !req.body.color) {
+    if(!req.body.name || !req.body.color || !req.body.taillength) {
         return res.status(400).send({
-            message: "Cat needs: name, color"
+            message: "Cat needs: name, color and a taillength"
         });
     }
 
     // Create a Cat
     const cat = new Cat({
         name: req.body.name,
-        owner: req.body.owner || "Michi",
-        color: req.body.color
+        owner: req.body.owner || "Steve Jobs",
+        color: req.body.color,
+        breed: req.body.breed || "Tiger",
+        taillength: req.body.taillength
     });
 
     // Save Cat in the database
@@ -64,17 +66,19 @@ exports.findOne = (req, res) => {
 // Update a cat identified by the catId in the request
 exports.update = (req, res) => {
     // Validate Request
-    if(!req.body.name || !req.body.color) {
+    if(!req.body.name || !req.body.color || !req.body.taillength) {
         return res.status(400).send({
-            message: "Cat needs: name, color"
+            message: "Cat needs: name, color and taillength"
         });
     }
 
     // Find cat and update it with the request body
     Cat.findByIdAndUpdate(req.params.catId, {
         name: req.body.name,
-        owner: req.body.owner || "Michi",
-        color: req.body.color
+        owner: req.body.owner || "Steve Jobs",
+        color: req.body.color,
+        breed: req.body.breed || "Tiger",
+        taillength: req.body.taillength
     }, {new: true})
         .then(Cat => {
             if(!Cat) {
