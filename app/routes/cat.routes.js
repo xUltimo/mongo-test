@@ -8,7 +8,7 @@ module.exports = (app) => {
     app.get('/cat', cat.findAll);
 
     //Count
-    router.get('/cat/count', cat.count);
+    app.get('/cat/count', cat.count);
 
     // Retrieve a single Cat with catId
     app.get('/cat/:catId', cat.findOne);
