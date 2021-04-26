@@ -120,3 +120,11 @@ exports.delete = (req, res) => {
         });
     });
 };
+
+exports.count = (err, result) => {
+    if (err) {
+        console.log(err);
+    } else {
+        res.json("Number of cats: " + result);
+    }
+};
