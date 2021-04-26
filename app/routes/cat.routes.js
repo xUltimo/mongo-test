@@ -7,9 +7,6 @@ module.exports = (app) => {
     // Retrieve all Cats
     app.get('/cat', cat.findAll);
 
-    //Count
-    app.get('/cat/count', cat.count);
-
     // Retrieve a single Cat with catId
     app.get('/cat/:catId', cat.findOne);
 

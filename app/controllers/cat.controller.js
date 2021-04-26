@@ -120,8 +120,3 @@ exports.delete = (req, res) => {
         });
     });
 };
-
-exports.count = (req, res) => {
-    Cat.then(count => res.json(count))
-        .catch(err => res.status(500).json({message: err}));
-};
