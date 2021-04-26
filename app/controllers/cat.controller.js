@@ -121,10 +121,7 @@ exports.delete = (req, res) => {
     });
 };
 
-exports.count = (err, result) => {
-    if (err) {
-        console.log(err);
-    } else {
-        res.json("Number of cats: " + result);
-    }
+exports.count = (req, res) => {
+    Cat.count({}).then(count => res.json(count))
+        .catch(err => res.status(500).json({message: err}));
 };
